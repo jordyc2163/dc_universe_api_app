@@ -1,0 +1,9 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+<h1>Villians List</h1>
+{% for i in villain%}
+{% set id = i.id %}
+<a href="{{ url_for('api.get_villain_id', id = id) }}" class="villain_list">{{i.alias}}</a>
+{% endfor%}
+{% endblock content %}

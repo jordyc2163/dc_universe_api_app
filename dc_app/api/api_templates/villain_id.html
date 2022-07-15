@@ -1,0 +1,13 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+<div class="hero-page">
+    <h1>{{villain.alias}}</h1>
+    <img src="{{villain.image}}" alt="{{villain.alias}} Image">
+    <p>Name: {{villain.first_name}} {{villain.last_name}}</p>
+    <p>First Appearance: {{villain.origin}}</p>
+    <p>Location: {{villain.location}}</p>
+    <p>Powers: {{villain.power}}</p>
+    <p>Bio: {{villain.bio}}</p>
+</div>
+{% endblock content %}

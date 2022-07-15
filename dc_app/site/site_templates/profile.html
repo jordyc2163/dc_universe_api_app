@@ -1,0 +1,32 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+
+{% if current_user.faction == "Villain" %}
+<div class="profile-image">
+    <img src="../../static/images/villain_group.jpeg" alt="Villains Image" class = "profile-img">
+</div>
+{% else %}
+<div class="profile-image">
+    <img src="../../static/images/hero_group.png" alt="Heroes Image" class = "profile-img">
+</div>
+{% endif %}
+<div class="profile-container">
+    <img src="https://via.placeholder.com/50" alt="profile photo" class ="profile-avatar">
+    <header class="profile-welcome">
+        <h1>Welcome back {{ current_user.first_name }}!</h1>
+    </header>
+
+    <div class="container-profile">
+        <h3>Here are your profile details</h3>
+        <ul class="profile-list-group">
+            <li class="list-group-item">First Name: {{ current_user.first_name }}</li>
+            <li class="list-group-item">Last Name: {{ current_user.last_name }}</li>
+            <li class="list-group-item">Email: {{ current_user.email }}</li>
+            <li class="list-group-item">Faction: {{ current_user.faction }} </li>
+            <li class="list-group-item">Token: {{ current_user.token }} </li>
+        </ul>
+    </div>
+</div>
+
+{% endblock content %}

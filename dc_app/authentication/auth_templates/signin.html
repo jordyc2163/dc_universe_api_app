@@ -1,0 +1,41 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+<div class="container">
+    {% with messages = get_flashed_messages(with_categories = true) %}
+        {% if messages %}
+            {% for cat, msg in messages %}
+                {% if cat == 'auth-failed' %}
+                <div class="flash-container">
+                    {{ msg }}
+                    <button type="button" class="close" data-dismiss = "alert" 
+                    onclick="this.parentElement.style.display='none'">&times;</button>
+                </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endwith %} 
+</div>
+<div class="sign-block">
+    <img src="../../static/images/group3.jpeg" alt="DC Heroes" class = "signin-image">
+    <div class = "signin-side">
+        <h1>Sign In</h1>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                <fieldset id="email-field">
+                    {{ form.email.label }}
+                    {{ form.email(class = "form-control") }}
+                </fieldset>
+                <fieldset id="pass-field">
+                    {{ form.password.label }}
+                    {{ form.password(class = "form-control") }}
+                </fieldset>
+        
+                <!-- Submit Button -->
+                {{ form.submit_button(class = "form-submit-button") }}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

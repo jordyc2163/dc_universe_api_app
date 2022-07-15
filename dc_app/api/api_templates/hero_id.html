@@ -1,0 +1,13 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+<div class="hero-page">
+    <h1>{{hero.alias}}</h1>
+    <img src="{{hero.image}}" alt="{{hero.alias}} Image" class="character-image">
+    <p>Name: {{hero.first_name}} {{hero.last_name}}</p>
+    <p>First Appearance: {{hero.origin}}</p>
+    <p>Location: {{hero.location}}</p>
+    <p>Powers: {{hero.power}}</p>
+    <p>Bio: {{hero.bio}}</p>
+</div>
+{% endblock content %}
