@@ -130,15 +130,15 @@ def update_villain(current_user_token, id):
     response = villain_schema.dump(villain)
     return jsonify(response)
 
-@api.route('/cars/<id>', methods=['DELETE'])
+@api.route('/villains/<id>', methods=['DELETE'])
 @token_required
-def delete_car(current_user_token, id):
+def delete_villain(current_user_token, id):
     villain = Villain.query.get(id)
     db.session.delete(villain)
     db.session.commit()
     response = villain_schema.dump(villain)
     return jsonify(response)
-    
+
 # Render Templates
 
 
