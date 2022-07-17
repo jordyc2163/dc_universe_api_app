@@ -85,6 +85,60 @@ def get_villain(id):
     response = villain_schema.dump(villain)
     return jsonify(response)
 
+@api.route('/heroes/<id>', methods = ['PUT'])
+@token_required
+def update_hero(current_user_token, id):
+    hero = Hero.query.get(id)
+    hero.image = request.json['image']
+    hero.alias = request.json['alias']
+    hero.first_name = request.json['first_name']
+    hero.last_name = request.json['last_name']
+    hero.origin = request.json['origin']
+    hero.location = request.json['location']
+    hero.power = request.json['power']
+    hero.bio = request.json['bio']
+    hero.user_token = current_user_token.token
+
+    db.session.commit()
+    response = hero_schema.dump(hero)
+    return jsonify(response)
+
+@api.route('/heroes/<id>', methods=['DELETE'])
+@token_required
+def delete_hero(current_user_token, id):
+    hero = Hero.query.get(id)
+    db.session.delete(hero)
+    db.session.commit()
+    response = hero_schema.dump(hero)
+    return jsonify(response)
+
+@api.route('/villains/<id>', methods = ['PUT'])
+@token_required
+def update_villain(current_user_token, id):
+    villain = Villain.query.get(id)
+    villain.image = request.json['image']
+    villain.alias = request.json['alias']
+    villain.first_name = request.json['first_name']
+    villain.last_name = request.json['last_name']
+    villain.origin = request.json['origin']
+    villain.location = request.json['location']
+    villain.power = request.json['power']
+    villain.bio = request.json['bio']
+    villain.user_token = current_user_token.token
+
+    db.session.commit()
+    response = villain_schema.dump(villain)
+    return jsonify(response)
+
+@api.route('/cars/<id>', methods=['DELETE'])
+@token_required
+def delete_car(current_user_token, id):
+    villain = Villain.query.get(id)
+    db.session.delete(villain)
+    db.session.commit()
+    response = villain_schema.dump(villain)
+    return jsonify(response)
+    
 # Render Templates
 
 
